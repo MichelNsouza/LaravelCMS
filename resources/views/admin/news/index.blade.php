@@ -27,11 +27,11 @@
 {{--                    <td class="align-middle">25/03/2023 às 18h33</td>--}}
                     <td class="align-middle">{{$item->created_at->format('d/m/Y á\s H\hi')}}</td>
                     <td class="align-middle">
-                        <a href="{{route('news.edit', $item->id)}}" class="btn btn-block btn-primary">Editar</a>
+                        <a href="{{route('news.edit', $item->id)}}" class="btn btn-sm btn-primary">Editar</a>
                         <form action="{{route('news.destroy', $item->id)}}" method="post">
                             @csrf
                             @method("delete")
-                            <button onclick="if (confirm('Deseja excluir?')) { this.form.submit()} " type="button" class="btn btn-block btn-danger">Excluir</button>
+                            <button onclick="if (confirm('Deseja excluir?')) { this.form.submit()} " type="button" class="btn btn-sm btn-danger">Excluir</button>
                         </form>
                     </td>
                 </tr>
