@@ -5,6 +5,12 @@
         { "src": "/public/**", "use": "@vercel/static" }
     ],
 
+    "functions": {
+        "api/*.php": {
+            "runtime": "vercel-php@0.6.0"
+        }
+    },
+
     "routes": [
         {
             "src": "/(css|js|images)/(.*)",
