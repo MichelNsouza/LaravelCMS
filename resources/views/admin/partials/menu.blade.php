@@ -14,7 +14,7 @@
                             <a class="nav-link" href="{{route("news.index")}}">Notícias</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Categorias</a>
+                            <a class="nav-link" href="{{route("category.index")}}">Categorias</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Comentários</a>

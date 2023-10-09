@@ -17,7 +17,6 @@
     <div class="row">
         <div class="col-md-12">
 
-            <h1 class="mb-4">Gerenciamento de Notícias</h1>
 
             @yield("main")
 

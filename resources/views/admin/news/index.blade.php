@@ -1,5 +1,8 @@
 @extends("admin.template.layout")
 @section("main")
+
+    <h1 class="mb-4">Gerenciamento de Notícias</h1>
+
 <div class="card">
     <div class="card-header d-flex justify-content-between align-items-center">
         <h4 class="mb-0">Notícias cadastradas</h4>
@@ -12,7 +15,7 @@
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Título</th>
-{{--                <th scope="col">Categoria</th>--}}
+                <th scope="col">Categoria</th>
                 <th scope="col">Data de publicação</th>
                 <th scope="col">Ações</th>
             </tr>
@@ -22,9 +25,8 @@
             @foreach($news as $item)
                 <tr>
                     <th class="align-middle" scope="row">{{$item->id}}</th>
-                    <td class="align-middle">{{$item->title}}</td>
-{{--                    <td class="align-middle">Saúde</td>--}}
-{{--                    <td class="align-middle">25/03/2023 às 18h33</td>--}}
+                    <td class="align-middle">{{ str()->limit($item->title, 50, '...')}}</td>
+                    <td class="align-middle">{{$item->category->title ?? "***"}}</td>
                     <td class="align-middle">{{$item->created_at->format('d/m/Y á\s H\hi')}}</td>
                     <td class="align-middle">
                         <a href="{{route('news.edit', $item->id)}}" class="btn btn-sm btn-primary">Editar</a>

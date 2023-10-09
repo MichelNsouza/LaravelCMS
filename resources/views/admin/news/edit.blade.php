@@ -1,6 +1,8 @@
 @extends("admin.template.layout")
 @section("main")
 
+    <h1 class="mb-4">Gerenciamento de Notícias</h1>
+
 @if(session()->has('success'))
     <div class="alert alert-success">
         {{session('success')}}
