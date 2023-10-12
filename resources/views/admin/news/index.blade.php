@@ -29,11 +29,14 @@
                     <td class="align-middle">{{$item->category->title ?? "***"}}</td>
                     <td class="align-middle">{{$item->created_at->format('d/m/Y á\s H\hi')}}</td>
                     <td class="align-middle">
-                        <a href="{{route('news.edit', $item->id)}}" class="btn btn-sm btn-primary">Editar</a>
                         <form action="{{route('news.destroy', $item->id)}}" method="post">
                             @csrf
                             @method("delete")
+                            <a href="{{route('news.edit', $item->id)}}" class="btn btn-sm btn-primary">Editar</a>
+
+                            @can('excluir-noticias')
                             <button onclick="if (confirm('Deseja excluir?')) { this.form.submit()} " type="button" class="btn btn-sm btn-danger">Excluir</button>
+                            @endcan
                         </form>
                     </td>
                 </tr>

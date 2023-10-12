@@ -5,25 +5,30 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
+use Intervention\Image\Facades\Image;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+Route::get('imagem', function (){
+    $imageManger = Image::make('A:\1 - ESTUDOS TI\laravel\LaravelCMS\storage\app\news\2.png');
+    $imageManger->resize(300, 200);
+    $imageManger->save('A:\1 - ESTUDOS TI\laravel\LaravelCMS\storage\app\news\thumb_2.png');
+});
 
-Route::resource("noticias", NewsController::class)
-    ->names("news")
-    ->parameters(["noticias" => "news"]);
+Route::middleware('auth')->group(function (){
 
-Route::resource("categorias", CategoryController::class)
-    ->names("category")
-    ->parameters(["categorias" => "category"]);
+    Route::resource("noticias", NewsController::class)
+        ->names("news")
+        ->parameters(["noticias" => "news"]);
+
+    Route::delete('noticias/{news}', [NewsController::class, 'destroy'])
+        ->name('news.destroy')
+        ->middleware('can:excluir-noticas');
+
+    Route::resource("categorias", CategoryController::class)
+        ->names("category")
+        ->parameters(["categorias" => "category"]);
+});
+
+
 
 Route::get('/', function () {
     return view('welcome');

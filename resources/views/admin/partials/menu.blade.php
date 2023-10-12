@@ -23,7 +23,15 @@
                             <a class="nav-link" href="#">Usuários</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Sair</a>
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <a
+                                    onclick="event.preventDefault();
+                                    this.closest('form').submit();"
+                                    class="nav-link"
+                                    href="#">Sair</a>
+                            </form>
+
                         </li>
                     </ul>
                 </div>

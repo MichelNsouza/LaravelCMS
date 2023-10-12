@@ -6,6 +6,7 @@ use App\Http\Requests\NewsRequest;
 use App\Models\Category;
 use App\Models\News;
 use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
 
 class NewsController extends Controller
 {
@@ -42,7 +43,21 @@ class NewsController extends Controller
      */
     public function store(NewsRequest $request)
     {
-        $this->news->create($request->all());
+        $data = $request->all();
+        $file = $request->file('cover');
+        //$file->storeAs('news',$request->user()->id . "." . $file->getClientOriginalExtension());
+
+        if (!empty($file)){
+            $file->store('news');
+            $data['cover'] = $file->hashName();
+
+            $imageMenager = Image::make(storage_path('app/news/') . $data['cover']);
+            $imageMenager->resize(300,200);
+            $imageMenager->save(storage_path('app/news/') .'capas/' . $data['cover']);
+
+        };
+
+        $this->news->create($data);
 
         session()->flash("success", "O registro foi gravado com sucesso");
 
