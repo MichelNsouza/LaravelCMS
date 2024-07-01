@@ -5,9 +5,10 @@ Este repositório contém a atividade desenvolvida no curso gratuito de laravel 
 ## Tecnologias utilizadas
 - FrontEnd: Bootstrap, Blade;
 - Backend: Laravel (PHP 🐘);
+- Banco: MySql
   
 ## Deploy
-- [Git Pages](https://laravel-cms.vercel.app/)
+- [Vercel](https://laravel-cms.vercel.app/)
 
 ## Imagens
 
